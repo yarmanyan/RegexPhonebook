@@ -7,7 +7,7 @@ with open("phonebook_raw.csv", encoding="utf-8-sig") as f:
   rows = csv.reader(f, delimiter=",")
   contacts_list = list(rows)
 
-# Поместить Фамилию, Имя и Отчество человека в поля lastname, firstname и surname
+# 1. Поместить Фамилию, Имя и Отчество человека в поля lastname, firstname и surname
   for row in contacts_list[1:]:  # пропускаем заголовок
     # Объединяем первые три поля и разбиваем по пробелам
     name_parts = ' '.join(row[:3]).split()
@@ -17,7 +17,7 @@ with open("phonebook_raw.csv", encoding="utf-8-sig") as f:
     row[1] = name_parts[1] if len(name_parts) > 1 else ''
     row[2] = name_parts[2] if len(name_parts) > 2 else ''
 
-# Привести все телефоны в формат +7(999)999-99-99.
+# 2. Привести все телефоны в формат +7(999)999-99-99.
 # Если есть добавочный номер, формат будет такой: +7(999)999-99-99 доб.9999.
   for row in contacts_list[1:]:
     phones_text = row[5]
